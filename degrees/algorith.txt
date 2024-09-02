@@ -1,0 +1,6 @@
+1. start with source node (state=people id, parent=none, action=movies)
+2. add to frontier
+3. start loop
+4. if frontier empy, no solution
+5. else if one of the movies contains the target finish
+6. for movies of the current state, if not visited, and if not checked author, add to frontier

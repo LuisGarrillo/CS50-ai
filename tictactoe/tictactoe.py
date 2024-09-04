@@ -3,6 +3,7 @@ Tic Tac Toe Player
 """
 
 import math
+from copy import deepcopy
 
 X = "X"
 O = "O"
@@ -21,16 +22,17 @@ def initial_state():
             [EMPTY, EMPTY, EMPTY]]
 
 
-def player(board):
+def player(board: list):
+    global last_board
     if not last_board:
-        last_board = board
-        return X 
-
-    for row_index in len(board):
-        for column_index in board[row_index]:
+        last_board = deepcopy(board)
+        return X
+    
+    for row_index in range(3):
+        for column_index in range(3):
             if not board[row_index][column_index] == last_board[row_index][column_index]:
                 last_move = board[row_index][column_index]
-                last_board = board
+                last_board = deepcopy(board)
                 return X if last_move == O else O
 
 
@@ -74,3 +76,4 @@ def minimax(board):
     Returns the optimal action for the current player on the board.
     """
     raise NotImplementedError
+
